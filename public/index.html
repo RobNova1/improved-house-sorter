@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js WebApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f1f1f1;
+        }
+        .tab {
+            margin: 0 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border-top: none;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        .active {
+            display: block;
+        }
+        .tab-active {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab" onclick="showTab('home')">Home</div>
+        <div class="tab" onclick="showTab('about')">About</div>
+        <div class="tab" onclick="showTab('team')">Team</div>
+    </div>
+    <div id="home" class="tab-content active">
+        <h1>Home</h1>
+        <p>Welcome to the Home page!</p>
+    </div>
+    <div id="about" class="tab-content">
+        <h1>About</h1>
+        <p>This is the About page.</p>
+    </div>
+    <div id="team" class="tab-content">
+        <h1>Team</h1>
+        <p>Meet our team on the Team page.</p>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            var contents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            var tabs = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('tab-active');
+            }
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('tab-active');
+        }
+    </script>
+</body>
+</html>
