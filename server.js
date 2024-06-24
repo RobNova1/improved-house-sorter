@@ -5,8 +5,8 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const USERNAME = 'admin'; // Change this to your desired username
-const PASSWORD = 'password'; // Change this to your desired password
+const USERNAME = process.env.USERNAME; // Change this to your desired username
+const PASSWORD = process.env.PASSWORD; // Change this to your desired password
 
 function auth(req, res, next) {
     const user = basicAuth(req);
