@@ -4,15 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Node.js WebApp</title>
-    <!-- Link to your external CSS file -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ccc;
+            margin-bottom: 20px;
+        }
+        .tab {
+            margin: 0 10px 0 0;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px 5px 0 0;
+            transition: background-color 0.3s;
+        }
+        .tab-active {
+            background-color: #0056b3;
+        }
+        .tab:hover {
+            background-color: #0056b3;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="tabs">
-            <div class="tab tab-active" onclick="showTab('home')">Home</div>
-            <div class="tab" onclick="showTab('about')">About</div>
-            <div class="tab" onclick="showTab('team')">Team</div>
+            <button class="tab tab-active" onclick="showTab('home')">Home</button>
+            <button class="tab" onclick="showTab('about')">About</button>
+            <button class="tab" onclick="showTab('team')">Team</button>
         </div>
         <div id="home" class="tab-content active">
             <h1>Home</h1>
