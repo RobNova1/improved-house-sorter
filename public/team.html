@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Team Member</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="header">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/team">Team</a>
+        <a href="/roster">Roster</a>
+    </div>
+    <div class="container">
+        <h1>Add Team Member</h1>
+        <form id="add-member-form" action="/add-team-member" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="role">Role:</label>
+            <input type="text" id="role" name="role" required>
+            <br>
+            <button type="submit">Add Member</button>
+        </form>
+    </div>
+
+    <script src="main.js" defer></script> <!-- Link to your main.js file -->
+</body>
+</html>

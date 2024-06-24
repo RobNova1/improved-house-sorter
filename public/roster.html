@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roster</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .team-member {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .filters {
+            margin-bottom: 20px;
+        }
+        .filter-input {
+            margin-right: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/team">Team</a>
+        <a href="/roster">Roster</a> <!-- Link to the current page, could be styled differently -->
+    </div>
+
+    <div class="container">
+        <h1>Roster</h1>
+        <div class="filters">
+            <input type="text" id="name-filter" class="filter-input" placeholder="Filter by Name">
+            <input type="text" id="role-filter" class="filter-input" placeholder="Filter by Role">
+            <button onclick="applyFilters()">Apply Filters</button>
+            <button onclick="resetFilters()">Reset Filters</button>
+        </div>
+        <div id="team-list"></div>
+    </div>
+
+    <script>
+        function fetchTeamMembers() {
+            fetch('/get-team-members')
+            .then(response => response.json())
+            .then(data => {
+                const teamList = document.getElementById('team-list');
+                teamList.innerHTML = '';
+                data.forEach(member => {
+                    const memberDiv = document.createElement('div');
+                    memberDiv.className = 'team-member';
+                    memberDiv.innerHTML = `<strong>${member.name}</strong><br>${member.role}`;
+                    teamList.appendChild(memberDiv);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function applyFilters() {
+            const nameFilter = document.getElementById('name-filter').value.trim().toLowerCase();
+            const roleFilter = document.getElementById('role-filter').value.trim().toLowerCase();
+
+            fetch('/get-team-members')
+            .then(response => response.json())
+            .then(data => {
+                const filteredMembers = data.filter(member => {
+                    const nameMatch = member.name.toLowerCase().includes(nameFilter);
+                    const roleMatch = member.role.toLowerCase().includes(roleFilter);
+                    return nameMatch && roleMatch;
+                });
+
+                const teamList = document.getElementById('team-list');
+                teamList.innerHTML = '';
+                filteredMembers.forEach(member => {
+                    const memberDiv = document.createElement('div');
+                    memberDiv.className = 'team-member';
+                    memberDiv.innerHTML = `<strong>${member.name}</strong><br>${member.role}`;
+                    teamList.appendChild(memberDiv);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function resetFilters() {
+            document.getElementById('name-filter').value = '';
+            document.getElementById('role-filter').value = '';
+            fetchTeamMembers();
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchTeamMembers);
+    </script>
+</body>
+</html>
