@@ -20,3 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add more JavaScript functionality as needed
 });
+
+// Example: Toggle navbar color on scroll
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 50) {
+        $('.navbar').addClass('bg-dark');
+    } else {
+        $('.navbar').removeClass('bg-dark');
+    }
+});

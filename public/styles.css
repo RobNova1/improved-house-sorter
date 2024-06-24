@@ -102,3 +102,12 @@ body {
     border: 1px solid #ccc;
     border-radius: 3px;
 }
+.btn.btn-primary {
+    background-color: forestgreen;
+    border-color: forestgreen;
+}
+
+.btn.btn-primary:hover {
+    background-color: darkgreen;
+    border-color: darkgreen;
+}
