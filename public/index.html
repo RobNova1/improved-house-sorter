@@ -4,64 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Node.js WebApp</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-        }
-        .tabs {
-            display: flex;
-            cursor: pointer;
-            padding: 10px;
-            background-color: #343a40;
-            color: #fff;
-        }
-        .tab {
-            margin: 0 10px;
-            padding: 10px 20px;
-            border-radius: 5px 5px 0 0;
-            background-color: #495057;
-            transition: background-color 0.3s;
-        }
-        .tab:hover {
-            background-color: #6c757d;
-        }
-        .tab-active {
-            background-color: #007bff;
-            color: #fff;
-        }
-        .tab-content {
-            display: none;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-top: none;
-            background-color: #fff;
-            border-radius: 0 0 5px 5px;
-        }
-        .active {
-            display: block;
-        }
-    </style>
+    <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="tabs">
-        <div class="tab tab-active" onclick="showTab('home')">Home</div>
-        <div class="tab" onclick="showTab('about')">About</div>
-        <div class="tab" onclick="showTab('team')">Team</div>
-    </div>
-    <div id="home" class="tab-content active">
-        <h1>Home</h1>
-        <p>Welcome to the Home page!</p>
-    </div>
-    <div id="about" class="tab-content">
-        <h1>About</h1>
-        <p>This is the About page.</p>
-    </div>
-    <div id="team" class="tab-content">
-        <h1>Team</h1>
-        <p>Meet our team on the Team page.</p>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab tab-active" onclick="showTab('home')">Home</div>
+            <div class="tab" onclick="showTab('about')">About</div>
+            <div class="tab" onclick="showTab('team')">Team</div>
+        </div>
+        <div id="home" class="tab-content active">
+            <h1>Home</h1>
+            <p>Welcome to the Home page!</p>
+        </div>
+        <div id="about" class="tab-content">
+            <h1>About</h1>
+            <p>This is the About page.</p>
+        </div>
+        <div id="team" class="tab-content">
+            <h1>Team</h1>
+            <p>Meet our team on the Team page.</p>
+        </div>
     </div>
 
     <script>
