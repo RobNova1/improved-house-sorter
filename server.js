@@ -73,12 +73,12 @@ app.get('/get-team-members', (req, res) => {
 
 // Route to serve index.html (assuming it's your home page)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'bootstrap.html'));
 });
 
 // Route to serve team.html
 app.get('/team', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'team.html'));
+    res.sendFile(path.join(__dirname, 'public', 'barchart.html'));
 });
 
 // Route to serve roster.html
@@ -90,3 +90,27 @@ app.get('/roster', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://127.0.0.1:${PORT}`);
 });
+
+
+// // server.js
+// const express = require('express');
+// const db = require('./database');
+
+// const app = express();
+// const port = 3000;
+
+app.get('/data', (req, res) => {
+    db.all("SELECT house, COUNT(FULLNAME) as count FROM house_mock GROUP BY house", (err, rows) => {
+        if (err) {
+      res.status(500).send(err.message);
+      return;
+    }
+    res.json(rows);
+  });
+});
+
+// app.use(express.static('public'));
+
+// app.listen(port, () => {
+//   console.log(`Server running at http://localhost:${port}/`);
+// });
