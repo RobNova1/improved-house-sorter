@@ -168,7 +168,9 @@
           },
           onClick: function(evt, element) {
             if (element.length > 0) {
-              window.location.href = 'roster.html';
+              const index = element[0].index;
+              const house = labels[index];
+              window.location.href = `roster.html?house=${house}`;
             }
           }
         }
